@@ -40,6 +40,7 @@ RUN set -x \
 		libssl-dev \
 		make \
 		wget \
+		vim \
 	' \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends $buildDeps \
