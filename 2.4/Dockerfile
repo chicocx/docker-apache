@@ -1,7 +1,7 @@
 FROM debian:jessie
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
-#RUN groupadd -r www-data && useradd -r --create-home -g www-data www-data
+RUN groupadd -r www-data && useradd -r --create-home -g www-data www-data
 
 ENV HTTPD_PREFIX /usr/local/apache2
 ENV PATH $HTTPD_PREFIX/bin:$PATH
@@ -77,6 +77,9 @@ RUN set -x \
 	&& apt-get purge -y --auto-remove $buildDeps
 
 COPY httpd-foreground /usr/local/bin/
+RUN chown www-data:www-data "/usr/local/bin/httpd-foreground
+RUN chmod +x "/usr/local/bin/httpd-foreground
+
 
 EXPOSE 80
 CMD ["/usr/local/bin/httpd-foreground"]
