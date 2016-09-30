@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM ubuntu:14.04
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 #RUN groupadd -r www-data && useradd -r --create-home -g www-data www-data > /dev/null
@@ -13,13 +13,14 @@ WORKDIR $HTTPD_PREFIX
 # https://httpd.apache.org/docs/2.4/install.html#requirements
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		libapr1 \
+		apache2 \
 		libaprutil1 \
 		libaprutil1-ldap \
 		libapr1-dev \
 		libaprutil1-dev \
 		libpcre++0 \
 		libssl1.0.0 \
+		vim \
 	&& rm -r /var/lib/apt/lists/*
 
 ENV HTTPD_VERSION 2.4.23
@@ -40,7 +41,6 @@ RUN set -x \
 		libssl-dev \
 		make \
 		wget \
-		vim \
 	' \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends $buildDeps \
