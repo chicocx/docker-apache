@@ -9,6 +9,20 @@ Utilize:
 docker run -dit --name apache-app --publish=9081:80 -v "$PWD":/usr/local/apache2/htdocs/ chicocx/docker-apache
 </pre>
 
+O parâmetro
+<pre>
+-v "$PWD":/usr/local/apache2/htdocs/
+</pre>
+configura o diretório de onde o comando docker é executado como sendo o ponto de montagem do diretório /usr/local/apache2/htdocs/ da imagem criada. No caso, "$PWD" retorna o diretório atual.
+
+É possível modificar esse diretório da seguinte forma:
+
+<pre>
+-v /diretorio/do/host:/usr/local/apache2/htdocs/
+</pre>
+
+Dessa forma, /diretorio/do/host passa a ser o diretório do host que conterá os arquivos lidos pela imagem em /usr/local/apache2/htdocs/
+
 ## Demais comandos
 
 Entrar na máquina/imagem
