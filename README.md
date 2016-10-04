@@ -32,3 +32,13 @@ Exclui os containers que estão parados
 docker rm $(docker ps -q -f status=exited)
 </pre>
 
+Lista as imagens baixadas
+<pre>
+docker images
+</pre>
+
+Exclui alguma imagem
+<pre>
+docker rmi f72216345d97
+</pre>
+
