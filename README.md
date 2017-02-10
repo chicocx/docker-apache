@@ -5,6 +5,13 @@ Imagem docker criada para servir como base de estudos ao servidor web apache.
 ## Uso
 
 Utilize:
+
+<pre>
+docker run -dit --name apache-app --publish=9081:80 chicocx/docker-apache
+</pre>
+
+Para configurar externamente à imagem docker o local onde o apache salvará o site, utilize:
+
 <pre>
 docker run -dit --name apache-app --publish=9081:80 -v "$PWD":/usr/local/apache2/htdocs/ chicocx/docker-apache
 </pre>
